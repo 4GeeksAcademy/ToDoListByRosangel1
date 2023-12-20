@@ -1,25 +1,37 @@
-import React from "react";
-
+import React, { useState } from "react";
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
+import Lists from "./Lists.js";
 
 //create your first component
 const Home = () => {
+	const [valorInput, setValorInput] = useState("");
+	const [porhacer, setPorhacer] = useState([]);
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="List">
+			<h1>My To Do List</h1>
+			<ul>
+				<li>
+					<input
+				 type="text"
+				onChange={(e) => setValorInput(e.target.value)}
+				value={valorInput}
+				onkeypress={(e) => {
+				if (e.key == "Enter") {
+				setPorhacer(porhacer.concat([valorInput]));
+				setValorInput("");}
+					}}>
+				</input>
+				</li>
+				{porhacer.map((texto) => (
+					<li>{texto}<i className="fa-solid fa-trash-can"></i>
+					</li>
+				))}
+
+			</ul>
+			<Lists />
 		</div>
+
 	);
 };
 
