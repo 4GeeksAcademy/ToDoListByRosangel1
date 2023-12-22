@@ -2,11 +2,27 @@ import React, { useState } from "react";
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
 import Lists from "./Lists.js";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 //create your first component
 const Home = () => {
-	const [valorInput, setValorInput] = useState("");
-	const [porhacer, setPorhacer] = useState([]);
+	const [valorinput, setValorInput] = useState("Tarea nueva");
+	const [porhacer, setPorhacer] = useState(["tarea de prueba"]);
+	const handleClick = () => {
+		setPorhacer([...porhacer, setValor])
+	}
+	const deleteTarea = (index) =>{
+		const nuevaTarea = porhacer.filter((texto, i) => i !== index)
+		setPorhacer(nuevaTarea);
+	}
+	const handleChange = (e) => {
+		setValorInput(e.target.value);
+	}
+	const handleOnKeydown = (e) => {
+		if(e.code === "Enter"){
+			setPorhacer([valorinput,...porhacer]);
+		}
+	}
 	return (
 		<div className="List">
 			<h1>My To Do List</h1>
@@ -14,19 +30,30 @@ const Home = () => {
 				<li>
 					<input
 				 type="text"
-				onChange={(e) => setValorInput(e.target.value)}
-				value={valorInput}
-				onkeypress={(e) => {
-				if (e.key == "Enter") {
-				setPorhacer(porhacer.concat([valorInput]));
-				setValorInput("");}
-					}}>
+				onChange={(e) => {
+					handleChange(e);
+				}}
+					onKeyDown={(e) => {
+						handleOnKeydown(e);
+					}}
+				//(e) => setValorInput(e.target.value)}
+				//</li>value={valorInput}
+				//</ul>onkeypress={(e) => {
+				//if (e.code == "Enter") {
+				//setPorhacer(porhacer.concat([valorInput]));
+			//	setValorInput("");}
+					//</div>}}
+					>
 				</input>
+				<button onClick={handleClick}></button>
 				</li>
-				{porhacer.map((texto) => (
-					<li>{texto}<i className="fa-solid fa-trash-can"></i>
+				{porhacer.map((texto, index) => {
+					return (
+						<li>{texto}<button onClick={() => deleteTarea(index)}>Delete </button>
 					</li>
-				))}
+					)
+					
+				})}
 
 			</ul>
 			<Lists />
