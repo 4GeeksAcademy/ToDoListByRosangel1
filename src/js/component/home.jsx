@@ -11,7 +11,7 @@ const Home = () => {
 	const handleClick = () => {
 		setPorhacer([...porhacer, setValor])
 	}
-	const deleteTarea = (index) =>{
+	const deleteTarea = (index) => {
 		const nuevaTarea = porhacer.filter((texto, i) => i !== index)
 		setPorhacer(nuevaTarea);
 	}
@@ -19,8 +19,8 @@ const Home = () => {
 		setValorInput(e.target.value);
 	}
 	const handleOnKeydown = (e) => {
-		if(e.code === "Enter"){
-			setPorhacer([valorinput,...porhacer]);
+		if (e.code === "Enter") {
+			setPorhacer([valorinput, ...porhacer]);
 		}
 	}
 	return (
@@ -29,34 +29,26 @@ const Home = () => {
 			<ul>
 				<li>
 					<input
-				 type="text"
-				onChange={(e) => {
-					handleChange(e);
-				}}
-					onKeyDown={(e) => {
-						handleOnKeydown(e);
-					}}
-				//(e) => setValorInput(e.target.value)}
-				//</li>value={valorInput}
-				//</ul>onkeypress={(e) => {
-				//if (e.code == "Enter") {
-				//setPorhacer(porhacer.concat([valorInput]));
-			//	setValorInput("");}
-					//</div>}}
-					>
-				</input>
-				<button onClick={handleClick}></button>
+						type="text"
+						onChange={(e) => {
+							handleChange(e);
+						}}
+						onKeyDown={(e) => {
+							handleOnKeydown(e);
+						}}>
+					</input>
+			<button onClick={handleClick}></button>
 				</li>
 				{porhacer.map((texto, index) => {
 					return (
 						<li>{texto}<button onClick={() => deleteTarea(index)}>Delete </button>
-					</li>
+						</li>
 					)
-					
+
 				})}
 
 			</ul>
-			<Lists />
+			<div>Pending:{porhacer.length}</div>
 		</div>
 
 	);
