@@ -11,8 +11,9 @@
 
 */
 
-body{
-    margin-top: 200px;
+html{
+    display:flex;
+    justify-content: center;
     
 }
 h1{
@@ -29,6 +30,7 @@ h1{
     padding: 25px;
     margin: 10px;
     border-radius: 26px;
+    
 }
 
 
@@ -40,4 +42,8 @@ h1{
     display: flex;
     align-items: center;
     overflow-wrap:normal;
+}
+
+button{
+    border-radius: 500px;
 }

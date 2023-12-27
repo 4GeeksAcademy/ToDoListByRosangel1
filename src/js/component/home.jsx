@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 //include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-import Lists from "./Lists.js";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+//import { FontAwesomeIcon } from '@fortawesome';
+//import { faTrashCan } from '@fortawesome';
 //create your first component
 const Home = () => {
 	const [valorinput, setValorInput] = useState("Tarea nueva");
-	const [porhacer, setPorhacer] = useState(["tarea de prueba"]);
+	const [porhacer, setPorhacer] = useState([""]);
 	const handleClick = () => {
 		setPorhacer([...porhacer, setValor])
 	}
@@ -37,20 +35,16 @@ const Home = () => {
 							handleOnKeydown(e);
 						}}>
 					</input>
-			<button onClick={handleClick}></button>
 				</li>
 				{porhacer.map((texto, index) => {
 					return (
-						<li>{texto}<button onClick={() => deleteTarea(index)}>Delete </button>
+						<li>{texto}<button onClick={() => deleteTarea(index)}> x</button>
 						</li>
 					)
-
 				})}
-
 			</ul>
-			<div>Pending:{porhacer.length}</div>
+			<div>Item left{porhacer.length}</div>
 		</div>
-
 	);
 };
 
