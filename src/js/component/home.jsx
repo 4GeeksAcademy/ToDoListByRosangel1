@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 //include images into your bundle
-//import { FontAwesomeIcon } from '@fortawesome';
-//import { faTrashCan } from '@fortawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+
 //create your first component
 const Home = () => {
 	const [valorinput, setValorInput] = useState("Tarea nueva");
 	const [porhacer, setPorhacer] = useState([""]);
-	const handleClick = () => {
-		setPorhacer([...porhacer, setValor])
-	}
+	
 	const deleteTarea = (index) => {
 		const nuevaTarea = porhacer.filter((texto, i) => i !== index)
 		setPorhacer(nuevaTarea);
@@ -28,6 +27,7 @@ const Home = () => {
 				<li>
 					<input
 						type="text"
+						placeholder="What needs to be done?"
 						onChange={(e) => {
 							handleChange(e);
 						}}
@@ -38,12 +38,12 @@ const Home = () => {
 				</li>
 				{porhacer.map((texto, index) => {
 					return (
-						<li>{texto}<button onClick={() => deleteTarea(index)}> x</button>
+						<li>{texto}<button onClick={() => deleteTarea(index)}><FontAwesomeIcon icon={faTrashCan} /></button>
 						</li>
 					)
 				})}
 			</ul>
-			<div>Item left{porhacer.length}</div>
+			<div>{porhacer.length} Item left</div>
 		</div>
 	);
 };

@@ -24,8 +24,8 @@ h1{
     margin: 20px 0px;
 }
 .List{
-    width: 600px;
-    min-height: 500px;
+    width: 400px;
+    min-height: 300px;
     background-color: aqua;
     padding: 25px;
     margin: 10px;
@@ -44,6 +44,7 @@ h1{
     overflow-wrap:normal;
 }
 
-button{
-    border-radius: 500px;
+li{
+    display: flex;
+    justify-content: center;
 }
